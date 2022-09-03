@@ -12,3 +12,11 @@ def user (request,name):
 def user1(request):
     name=request.POST['user']
     return redirect('user/'+name)
+
+def update(request):
+    name=request.POST['name']
+    id=request.POST['id']
+    temp=task.objects.get(id=id)
+    temp.review=True
+    temp.save()
+    return redirect('/user/'+name)
